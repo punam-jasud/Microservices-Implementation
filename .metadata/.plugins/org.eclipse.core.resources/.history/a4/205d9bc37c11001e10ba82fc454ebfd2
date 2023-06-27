@@ -1,0 +1,40 @@
+package com.punam.docker.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.punam.docker.model.OrgnizationDto;
+import com.punam.docker.service.OrgnizationService;
+
+@RestController
+public class DockerController {
+	
+	@Autowired
+	private OrgnizationService orgnizationService;
+	
+	
+	@GetMapping("/docker")
+	public String docker() {
+		return "Hello Docker!";
+	}
+	
+	@PostMapping
+	public ResponseEntity<OrgnizationDto> saveOrgnization(@RequestBody OrgnizationDto orgnizationDto){
+		OrgnizationDto org = orgnizationService.saveOrgnization(orgnizationDto);
+		return new ResponseEntity<OrgnizationDto>(org, HttpStatus.CREATED);
+	}
+	
+	
+	@GetMapping("/{code}")
+	public ResponseEntity<OrgnizationDto> getOrgnization(@PathVariable String code){
+		OrgnizationDto org = orgnizationService.getOrgnization(code);
+		return new ResponseEntity<OrgnizationDto>(org, HttpStatus.OK);
+	}
+
+}

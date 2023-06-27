@@ -1,0 +1,32 @@
+package com.punam.employee.mapper;
+
+import com.punam.employee.entity.Employee;
+import com.punam.employee.model.EmployeeDto;
+
+public class EmployeeMapper {
+	
+	public static EmployeeDto mapToEmployeeDto(Employee employee) {
+		
+		EmployeeDto employeeDto = new EmployeeDto(
+				employee.getId(), 
+				employee.getFirstName(),
+				employee.getLastName(), 
+				employee.getEmail(),
+				employee.getDepartmentCode());
+		return employeeDto;
+		
+	}
+	
+	public static EmployeeDto mapToEmployee(EmployeeDto employeeDto) {
+		
+		EmployeeDto employeeDto = new EmployeeDto(
+				employee.getId(), 
+				employee.getFirstName(),
+				employee.getLastName(), 
+				employee.getEmail(),
+				employee.getDepartmentCode());
+		return employeeDto;
+		
+	}
+
+}

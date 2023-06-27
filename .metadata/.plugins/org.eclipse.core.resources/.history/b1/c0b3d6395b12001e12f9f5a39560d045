@@ -1,0 +1,5 @@
+package com.punam.kafka.model;
+
+public class User {
+
+}

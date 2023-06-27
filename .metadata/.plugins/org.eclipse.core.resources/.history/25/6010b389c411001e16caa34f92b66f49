@@ -1,0 +1,23 @@
+'''-''': ''
+'-':
+- '''''''3307'''':''''3306'''''''
+- '''''''8085'''':''''8085'''''''
+- mysqldb
+- springboot-docker-demo
+MYSQL_DATABASE: orgnization
+MYSQL_ROOT_PASSWORD: 12345
+build: ''''''
+container_name: ''
+context: .
+depends_on: ''''''
+dockerfile: Dockerfile
+environment: ''''''
+image: mysql
+mysqldb: ''''''
+networks: ''''''
+ports: ''''''
+restart: "\"on-failure\t\""
+services: ''''''
+springboot-docker-demo: ''''''
+springboot-mysql-net: ''''''
+version: '''"3.9"'''

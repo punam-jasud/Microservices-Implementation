@@ -1,0 +1,6 @@
+1687683511650	Rename type 'EmailServiceApplication'
+1687683514136	Rename type 'EmailServiceApplicationTests'
+1687683531572	Rename package 'com.punam.email.kafka'
+1687683614983	Delete element
+1687683652228	Rename type 'RabbitMQJsonConsumer'
+1687684117275	Rename type 'RabbitmqOrderConfig'

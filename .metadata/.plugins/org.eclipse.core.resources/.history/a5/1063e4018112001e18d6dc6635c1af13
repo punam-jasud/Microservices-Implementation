@@ -1,0 +1,8 @@
+package com.punam.entity;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class WikimediaEventData {
+
+}

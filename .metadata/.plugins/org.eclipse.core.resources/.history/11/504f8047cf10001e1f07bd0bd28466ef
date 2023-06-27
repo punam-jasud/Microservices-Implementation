@@ -1,0 +1,16 @@
+package com.punam.department.mapper;
+
+import com.punam.department.entity.Department;
+import com.punam.department.model.DepartmentDto;
+
+public class DepartmentMapper {
+	
+	public static DepartmentDto mapToDepartmentDto(Department department) {
+		
+	}
+	
+	public static DepartmentDto mapToDepartment(DepartmentDto department) {
+		
+	}
+
+}

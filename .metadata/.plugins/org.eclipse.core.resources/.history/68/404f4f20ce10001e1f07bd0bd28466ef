@@ -1,0 +1,5 @@
+package com.punam.employee.mapper;
+
+public class EmployeeMapper {
+
+}

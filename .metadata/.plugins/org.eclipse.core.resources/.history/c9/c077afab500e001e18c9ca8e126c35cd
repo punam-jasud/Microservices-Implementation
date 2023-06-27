@@ -1,0 +1,52 @@
+package com.punam.employee.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.punam.employee.entity.Employee;
+import com.punam.employee.model.EmployeeDto;
+import com.punam.employee.repository.EmployeeRepository;
+
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	@Override
+	public EmployeeDto saveDepartment(EmployeeDto emp) {
+		
+		Employee employee = new Employee(
+				emp.getId(), 
+				emp.getFirstName(),
+				emp.getLastName(),
+				emp.getEmail(),
+				emp.getDepartmentCode());
+		
+		Employee savedEmployee = employeeRepository.save(employee);
+		
+		EmployeeDto employeeDto = new EmployeeDto(
+				savedEmployee.getId(), 
+				savedEmployee.getFirstName(),
+				savedEmployee.getLastName(), 
+				savedEmployee.getEmail(),
+				savedEmployee.getDepartmentCode());
+		
+		return employeeDto;
+	}
+
+	@Override
+	public EmployeeDto getEmployee(Long id) {
+		
+		Employee employee = employeeRepository.findById(id).get();
+		
+		EmployeeDto employeeDto = new EmployeeDto(
+				employee.getId(), 
+				employee.getFirstName(),
+				employee.getLastName(), 
+				employee.getEmail());
+		
+		return employeeDto;
+	}
+
+}

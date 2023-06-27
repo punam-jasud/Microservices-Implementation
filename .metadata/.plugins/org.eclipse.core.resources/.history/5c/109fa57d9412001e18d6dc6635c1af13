@@ -1,0 +1,5 @@
+package com.punam.email.kafka;
+
+public class EmailConsumer {
+
+}

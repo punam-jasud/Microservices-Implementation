@@ -1,0 +1,5 @@
+package com.punam.orgnization.repository;
+
+public interface OrgnizationRepository {
+
+}

@@ -1,0 +1,65 @@
+package com.punam.department.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.punam.department.model.DepartmentDto;
+import com.punam.department.service.DepartmentService;
+
+import io.swagger.v3.oas.annotations.ExternalDocumentation;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.License;
+
+
+@OpenAPIDefinition(
+			info = @Info(
+					title = "Department Service REST APIs",
+					description = "Department Service REST APIs Documentation",
+					version = "v1.0",
+					contact = @Contact(
+								name = "Punam Jasud",
+								email = "punam@gmail.com",
+								url = "http://javanetguides.com"
+								
+					),
+					license = @License(
+								name = "Apache 2.0",
+								url = "http://javanetguides.com"
+					)
+			),
+			externalDocs = @ExternalDocumentation(
+					description = "Department-Service Doc",
+					url = "http://javanetguides.com"
+			)
+)
+
+
+@RestController
+@RequestMapping("api/departments")
+public class DepartmentController {
+	
+	@Autowired
+	private DepartmentService departmentService;
+	
+	@PostMapping
+	public ResponseEntity<DepartmentDto> saveDepartment(@RequestBody DepartmentDto departmentDto){
+		DepartmentDto department = departmentService.saveDepartment(departmentDto);
+		return new ResponseEntity<>(department, HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/{code}")
+	public ResponseEntity<DepartmentDto> getDepartment(@PathVariable String code){
+		DepartmentDto department = departmentService.getDepartmentByCode(code);
+		return new ResponseEntity<>(department, HttpStatus.OK);
+	}
+	
+
+}

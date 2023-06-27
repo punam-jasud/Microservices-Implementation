@@ -1,0 +1,5 @@
+package com.punam.domains.model;
+
+public class Order {
+
+}

@@ -1,0 +1,5 @@
+package com.punam.employee.model;
+
+public class APIResponse {
+
+}

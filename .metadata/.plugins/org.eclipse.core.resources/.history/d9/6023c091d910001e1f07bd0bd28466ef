@@ -1,0 +1,19 @@
+package com.punam.orgnization.service;
+
+import com.punam.orgnization.model.OrgnizationDto;
+
+public class OrgnizationServiceImpl implements OrgnizationService {
+
+	@Override
+	public OrgnizationDto saveOrgnization(OrgnizationDto orgnizationDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OrgnizationDto getOrgnization(String code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

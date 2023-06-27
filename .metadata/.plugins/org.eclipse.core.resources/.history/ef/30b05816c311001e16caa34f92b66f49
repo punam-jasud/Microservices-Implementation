@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+	mysqldb:
+		image: mysql
+		container_name: mysqldb
+		environment:
+			MYSQL_ROOT_PASSWORD: 12345
+			MYSQL_DATABASE: orgnization
+		ports:
+			- '3307':'3306'
+		networks:
+			springboot-mysql-net:
+			

@@ -1,0 +1,10 @@
+package com.punam.employee.client;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(url = "", name = "DEPARTMENT-SERVICE")
+public interface APIClient {
+	
+	
+
+}

@@ -1,0 +1,87 @@
+package com.punam.employee.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.punam.employee.client.APIClient;
+import com.punam.employee.entity.Employee;
+import com.punam.employee.model.APIResponse;
+import com.punam.employee.model.DepartmentDto;
+import com.punam.employee.model.EmployeeDto;
+import com.punam.employee.repository.EmployeeRepository;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Autowired
+	private WebClient webClient;
+	
+	@Autowired
+	private APIClient apiClient;
+	
+
+	@Override
+	public EmployeeDto saveEmployee(EmployeeDto emp) {
+		
+		Employee employee = new Employee(
+				emp.getId(), 
+				emp.getFirstName(),
+				emp.getLastName(),
+				emp.getEmail(),
+				emp.getDepartmentCode());
+		
+		Employee savedEmployee = employeeRepository.save(employee);
+		
+		EmployeeDto employeeDto = new EmployeeDto(
+				savedEmployee.getId(), 
+				savedEmployee.getFirstName(),
+				savedEmployee.getLastName(), 
+				savedEmployee.getEmail(),
+				savedEmployee.getDepartmentCode());
+		
+		return employeeDto;
+	}
+
+	@CircuitBreaker(name = "${spring.application.name}", fallbackMethod = "getEmployeeFallback")
+	@Override
+	public APIResponse getEmployee(Long id) {
+		
+		Employee employee = employeeRepository.findById(id).get();
+		
+		EmployeeDto employeeDto = new EmployeeDto(
+				employee.getId(), 
+				employee.getFirstName(),
+				employee.getLastName(), 
+				employee.getEmail(),
+				employee.getDepartmentCode());
+		
+//		ResponseEntity<DepartmentDto> deptResponse = restTemplate.getForEntity("http://localhost:8080/api/departments/" + employee.getDepartmentCode(),
+//				DepartmentDto.class);
+//		DepartmentDto departmentDto = deptResponse.getBody();
+		
+//		DepartmentDto departmentDto = webClient.get()
+//				.uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode()).retrieve()
+//				.bodyToMono(DepartmentDto.class).block();
+		
+		DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
+
+		APIResponse response = new APIResponse();
+		response.setEmployee(employeeDto);
+		response.setDepartment(departmentDto);
+		
+		return response;
+	}
+
+}

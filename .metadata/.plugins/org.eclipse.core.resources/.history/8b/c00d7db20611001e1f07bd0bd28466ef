@@ -1,0 +1,67 @@
+package com.punam.employee.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.punam.employee.model.APIResponse;
+import com.punam.employee.model.EmployeeDto;
+import com.punam.employee.service.EmployeeService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(
+		name = "OrgnizationController",
+		description = "REST APIs for Orgnization Service"
+)
+
+@RestController
+@RequestMapping("api/employees")
+public class EmployeeController {
+	
+	@Autowired
+	private EmployeeService employeeService;
+	
+	
+	@Operation(
+			summary = "Save Orgnization API",
+			description = "Save Orgnization API Saves Orgnization Object in the Database"
+	)
+	
+	@ApiResponse(
+			responseCode = "201",
+			description = "HTTP Status 201 CREATED"
+	)
+	
+	@PostMapping
+	public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody EmployeeDto employeeDto){
+		EmployeeDto employee = employeeService.saveEmployee(employeeDto);
+		return new ResponseEntity<>(employee, HttpStatus.CREATED);
+	}
+	
+	
+	
+	@Operation(
+			summary = "Get Orgnization API",
+			description = "Get Orgnization API Returns Orgnization Object from the Database"
+	)
+	
+	@ApiResponse(
+			responseCode = "200",
+			description = "HTTP Status 200 OK"
+	)
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<APIResponse> getEmployee(@PathVariable Long id){
+		APIResponse employee = employeeService.getEmployee(id);
+		return new ResponseEntity<>(employee, HttpStatus.OK);
+	}
+
+}

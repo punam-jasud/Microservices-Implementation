@@ -1,0 +1,5 @@
+package com.punam.employee.client;
+
+public interface APIClient {
+
+}

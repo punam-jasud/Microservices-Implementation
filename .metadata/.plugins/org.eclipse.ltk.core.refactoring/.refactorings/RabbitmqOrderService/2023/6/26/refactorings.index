@@ -1,0 +1,21 @@
+1687681779893	Delete element
+1687681938638	Rename field 'queueName'
+1687682025736	Rename field 'routingKey'
+1687682061081	Rename field 'emailRoutingKey'
+1687682098815	Rename method 'queue'
+1687682120976	Rename method 'jsonQueue'
+1687682165944	Rename method 'binding'
+1687682200886	Rename method 'jsonBinding'
+1687682269602	Rename package 'com.punam.order.kafka'
+1687682296496	Delete element
+1687682327338	Delete element
+1687682332115	Copy compilation unit
+1687682365013	Delete element
+1687682380536	Rename type 'RabbitMQJsonProducer'
+1687683032778	Rename type 'OrderServiceApplication'
+1687683039159	Rename type 'OrderServiceApplicationTests'
+1687683072237	Rename type 'RabbitmqConfig'
+1687683094768	Rename type 'RabbitMQController'
+1687683116035	Rename type 'RabbitmqController'
+1687683131163	Rename type 'RabbitMQOrderProducer'
+1687684097057	Copy compilation unit

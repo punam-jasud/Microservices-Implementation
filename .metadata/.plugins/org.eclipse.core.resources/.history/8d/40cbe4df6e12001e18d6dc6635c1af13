@@ -1,0 +1,5 @@
+package com.punam.config;
+
+public class KafkaTopicConfig {
+
+}

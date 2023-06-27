@@ -1,0 +1,37 @@
+package com.punam.order.producer;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class RabbitMQOrderProducer {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQOrderProducer.class);
+	
+	@Value("${rabbitmq.exchange.name}")
+	private String exchangeName;
+	
+	@Value("${rabbitmq.email.routingkey.name}")
+	private String emailRoutingKey;
+	
+	@Value("${rabbitmq.stock.routingkey.name}")
+	private String stockRoutingKey;
+	
+	
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+	
+	
+	public void sendMessage() {
+		
+		LOGGER.info(String.format("Message Published : %s", user.toString()));
+		rabbitTemplate.convertAndSend(exchangeName, routingKey, user);
+	
+	}
+
+}

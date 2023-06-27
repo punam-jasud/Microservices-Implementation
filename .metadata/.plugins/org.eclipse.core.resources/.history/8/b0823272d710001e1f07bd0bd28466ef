@@ -1,0 +1,5 @@
+package com.punam.orgnization.service;
+
+public interface OrgnizationService {
+
+}

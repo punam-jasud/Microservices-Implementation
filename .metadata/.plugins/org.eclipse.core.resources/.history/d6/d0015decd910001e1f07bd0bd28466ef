@@ -1,0 +1,25 @@
+package com.punam.orgnization.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.punam.orgnization.model.OrgnizationDto;
+import com.punam.orgnization.repository.OrgnizationRepository;
+
+@Service
+public class OrgnizationServiceImpl implements OrgnizationService {
+	
+	@Autowired
+	private OrgnizationRepository repository;
+
+	@Override
+	public OrgnizationDto saveOrgnization(OrgnizationDto orgnizationDto) {
+		return null;
+	}
+
+	@Override
+	public OrgnizationDto getOrgnization(String code) {
+		return null;
+	}
+
+}

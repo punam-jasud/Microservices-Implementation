@@ -1,0 +1,5 @@
+package com.punam.repository;
+
+public interface WikimediaRepository {
+
+}

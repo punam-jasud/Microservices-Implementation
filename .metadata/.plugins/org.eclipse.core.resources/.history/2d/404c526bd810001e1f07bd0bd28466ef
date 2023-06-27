@@ -1,0 +1,23 @@
+package com.punam.orgnization.entity;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+
+@Entity
+@Table(name = "ORGNIZATION")
+@AllArgsConstructor
+@NoArgsConstructor
+public class Orgnization {
+	
+	private Long id;
+	private String name;
+	private String description;
+	private String code;
+	private LocalDateTime createdDate;
+
+}
